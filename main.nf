@@ -4,6 +4,7 @@ nextflow.enable.dsl = 2
 include {FASTQC} from "./modules/fastqc/fastqc.nf"
 include {MULTIQC} from "./modules/multiqc/multiqc.nf"
 
+//base workflow
 workflow {
     if( params.runType == "sra" ) {
         input_ch = Channel.fromSRA(params.genomeIds, cache: true, apiKey: params.apiKey)}

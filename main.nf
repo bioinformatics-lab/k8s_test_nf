@@ -7,7 +7,7 @@ include {MULTIQC} from "./modules/multiqc/multiqc.nf"
 //base workflow
 workflow {
     if (params.reads) {
-        input_ch = Channel.fromFilePairs(params.reads)
+        input_ch = Channel.fromFilePairs(params.reads,checkIfExists: true)
     } else {
         input_ch = Channel.fromSRA(params.genomeIds, cache: true, apiKey: params.apiKey)
     }
